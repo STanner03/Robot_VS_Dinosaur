@@ -1,4 +1,6 @@
 from robot import Robot
+from weapon import Weapon
+import random
 
 class Fleet:
     def __init__(self):
@@ -14,3 +16,19 @@ class Fleet:
         robo_cop = Robot('Robo Cop')
         self.robots_list.append(robo_cop)
         return self.robots_list
+
+    def attack(self):
+        hit_points = 0
+        self.robot.robots_list[0].active_weapon = Weapon.weapons_choice(Weapon)
+        hp = int(self.robot.robots_list[0].active_weapon.attack_power * random.randrange(70, 170) / 100)
+        hit_points += hp
+        print(f"{self.robot.robots_list[0].name}'s attack adds {hp} damage")
+        self.robot.robots_list[1].active_weapon = Weapon.weapons_choice(Weapon)
+        hp = int(self.robot.robots_list[1].active_weapon.attack_power * random.randrange(55, 155) / 100)
+        hit_points += hp
+        print(f"{self.robot.robots_list[1].name}'s attack adds {hp} damage")
+        self.robot.robots_list[2].active_weapon = Weapon.weapons_choice(Weapon)
+        hp = int(self.robot.robots_list[2].active_weapon.attack_power * random.randrange(50, 140) / 100)
+        hit_points += hp
+        print(f"{self.robot.robots_list[2].name}'s attack adds {hp} damage\n ")
+        return hit_points
